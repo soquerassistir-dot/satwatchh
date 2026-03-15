@@ -14,6 +14,7 @@
 <video id="player" controls></video>
 
 <h2 id="title"></h2>
+<p id="author"></p>
 
 <div>
 👍 <span id="likes"></span>
@@ -42,6 +43,8 @@ let v=await res.json()
 
 player.src=v.url
 title.innerText=v.title
+author.innerText="Canal: "+v.author
+
 likes.innerText=v.likes
 views.innerText=v.views
 
@@ -50,10 +53,11 @@ comments.innerHTML=""
 v.comments.forEach(c=>{
 
 let d=document.createElement("div")
-d.innerText=c.text
+d.innerText=c.user+": "+c.text
 comments.appendChild(d)
 
 })
+
 }
 
 async function like(){
@@ -66,11 +70,12 @@ load()
 async function comment(){
 
 let text=commentText.value
+let user=localStorage.getItem("user")||"anon"
 
 await fetch("/comment/"+id,{
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify({text})
+body:JSON.stringify({text,user})
 })
 
 commentText.value=""

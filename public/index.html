@@ -1,30 +1,28 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S@tWatch - Home</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>S@tWatch</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <h1 onclick="location.href='/'">S@tWatch</h1>
-        <div id="userArea">
-            <!-- Botões de login ou upload aparecerão aqui via script -->
-        </div>
-    </header>
+<header>
+<h1>S@tWatch</h1>
+<div id="userArea"></div>
+</header>
 
-    <main>
-        <div class="grid" id="videos">
-            <!-- Os vídeos são carregados aqui -->
-        </div>
-    </main>
+<div class="upload">
+<input id="title" placeholder="Título">
+<input type="file" id="video">
+<button onclick="upload()">Enviar</button>
+</div>
 
-    <script src="script.js"></script>
-    <script>
-        // Carrega os vídeos ao abrir a página
-        window.onload = load;
-    </script>
+<div class="grid" id="videos"></div>
+
+<script src="script.js"></script>
+
 </body>
 </html>

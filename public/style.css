@@ -1,166 +1,45 @@
-:root {
-    --bg-color: #0f0f0f;
-    --surface-color: #1a1a1a;
-    --primary-color: #ff0000;
-    --text-main: #ffffff;
-    --text-secondary: #aaaaaa;
-    --border-color: #333333;
-    --accent-hover: #cc0000;
+
+body{
+font-family:Arial;
+margin:0;
+background:#f2f2f2;
 }
 
-body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    background-color: var(--bg-color);
-    color: var(--text-main);
+header{
+background:white;
+padding:15px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+display:flex;
+justify-content:space-between;
 }
 
-/* Header */
-header {
-    background-color: var(--bg-color);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,260px);
+gap:20px;
+padding:20px;
 }
 
-header h1 {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    cursor: pointer;
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+cursor:pointer;
 }
 
-/* User Area & Navigation */
-#userArea {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+.card img{
+width:100%;
+height:150px;
+object-fit:cover;
 }
 
-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
+.video-container{
+max-width:900px;
+margin:auto;
+padding:20px;
 }
 
-button:hover {
-    background-color: var(--accent-hover);
-}
-
-.btn-secondary {
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-}
-
-.btn-secondary:hover {
-    background-color: #2a2a2a;
-}
-
-/* Inputs */
-input {
-    background-color: #000;
-    border: 1px solid var(--border-color);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-}
-
-/* Grid de Vídeos */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 24px;
-    max-width: 1600px;
-    margin: 0 auto;
-}
-
-.card {
-    background-color: transparent;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.02);
-}
-
-.card img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    border-radius: 12px;
-    background-color: var(--surface-color);
-}
-
-.card-info {
-    padding: 12px 4px;
-}
-
-.card-info h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.4;
-    color: var(--text-main);
-}
-
-.card-info p {
-    margin: 4px 0 0;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-/* Página de Upload */
-.upload-container {
-    max-width: 600px;
-    margin: 40px auto;
-    background-color: var(--surface-color);
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.upload-container h2 {
-    margin-top: 0;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-group label {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.form-group input {
-    font-size: 1rem;
-    padding: 12px;
-}
-
-/* Player Page */
-.video-view-container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
-}
-
-video {
-    width: 100%;
-    border-radius: 12px;
-    background-color: black;
+.upload{
+padding:20px;
 }
