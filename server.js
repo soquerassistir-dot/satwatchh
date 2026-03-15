@@ -40,7 +40,7 @@ app.post("/upload",upload.single("video"),async(req,res)=>{
   id:Date.now(),
   title,
   url:result.secure_url,
-  thumb:result.secure_url.replace(".mp4",".jpg"),
+  thumb:result.secure_url.replace(/\.[^/.]+$/, ".jpg"),
   likes:0,
   views:0,
   comments:[]
