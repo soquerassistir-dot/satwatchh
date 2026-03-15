@@ -1,101 +1,98 @@
 :root {
-    --primary: #ff0000;
-    --bg: #0f0f0f;
-    --surface: #1e1e1e;
-    --text: #ffffff;
+    --bg-color: #0f0f0f;
+    --surface-color: #1a1a1a;
+    --primary-color: #ff0000;
+    --text-main: #ffffff;
     --text-secondary: #aaaaaa;
-    --border: #333333;
+    --border-color: #333333;
+    --accent-hover: #cc0000;
 }
 
 body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
-    background: var(--bg);
-    color: var(--text);
+    background-color: var(--bg-color);
+    color: var(--text-main);
 }
 
-/* Header Estilizado */
+/* Header */
 header {
-    background: var(--bg);
+    background-color: var(--bg-color);
     padding: 0 2rem;
-    height: 65px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--border);
+    z-index: 1000;
 }
 
 header h1 {
-    color: var(--primary);
     font-size: 1.5rem;
-    letter-spacing: -1px;
+    color: var(--primary-color);
+    cursor: pointer;
 }
 
-#userArea input {
-    background: #000;
-    border: 1px solid var(--border);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 4px;
-    margin-right: 5px;
+/* User Area & Navigation */
+#userArea {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 button {
-    background: var(--primary);
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 8px 16px;
     border-radius: 20px;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: background 0.2s;
 }
 
 button:hover {
-    opacity: 0.8;
+    background-color: var(--accent-hover);
 }
 
-/* Área de Upload */
-.upload {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: var(--surface);
-    border-radius: 12px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
+.btn-secondary {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
 }
 
-.upload input[type="text"] {
-    flex: 1;
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: 10px;
+.btn-secondary:hover {
+    background-color: #2a2a2a;
+}
+
+/* Inputs */
+input {
+    background-color: #000;
+    border: 1px solid var(--border-color);
     color: white;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
 }
 
 /* Grid de Vídeos */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    padding: 20px;
-    max-width: 1400px;
-    margin: auto;
+    padding: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .card {
-    background: transparent;
+    background-color: transparent;
+    cursor: pointer;
     transition: transform 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: scale(1.02);
 }
 
 .card img {
@@ -103,23 +100,61 @@ button:hover {
     aspect-ratio: 16/9;
     object-fit: cover;
     border-radius: 12px;
-    background: var(--surface);
+    background-color: var(--surface-color);
 }
 
-.card p {
-    margin: 10px 0 4px 0;
-    font-weight: 600;
-    font-size: 1rem;
+.card-info {
+    padding: 12px 4px;
 }
 
-.card small {
-    color: var(--text-secondary);
+.card-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+
+.card-info p {
+    margin: 4px 0 0;
     font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
-/* Player de Vídeo */
-.video-container {
-    max-width: 1000px;
+/* Página de Upload */
+.upload-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: var(--surface-color);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.upload-container h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    font-size: 1rem;
+    padding: 12px;
+}
+
+/* Player Page */
+.video-view-container {
+    max-width: 1200px;
     margin: 20px auto;
     padding: 0 20px;
 }
@@ -127,18 +162,5 @@ button:hover {
 video {
     width: 100%;
     border-radius: 12px;
-    background: #000;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-#comments {
-    margin-top: 20px;
-}
-
-#comments div {
-    background: var(--surface);
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    border-left: 3px solid var(--primary);
+    background-color: black;
 }
