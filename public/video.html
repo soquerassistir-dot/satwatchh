@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>S@tWatch</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="video-container">
+
+<video id="player" controls></video>
+
+<h2 id="title"></h2>
+
+<div>
+👍 <span id="likes"></span>
+👁 <span id="views"></span>
+</div>
+
+<button onclick="like()">Like</button>
+
+<h3>Comentários</h3>
+
+<input id="commentText">
+<button onclick="comment()">Enviar</button>
+
+<div id="comments"></div>
+
+</div>
+
+<script>
+
+const id=new URLSearchParams(location.search).get("id")
+
+async function load(){
+
+let res=await fetch("/video/"+id)
+let v=await res.json()
+
+player.src=v.url
+title.innerText=v.title
+likes.innerText=v.likes
+views.innerText=v.views
+
+comments.innerHTML=""
+
+v.comments.forEach(c=>{
+
+let d=document.createElement("div")
+d.innerText=c.text
+comments.appendChild(d)
+
+})
+}
+
+async function like(){
+
+await fetch("/like/"+id,{method:"POST"})
+load()
+
+}
+
+async function comment(){
+
+let text=commentText.value
+
+await fetch("/comment/"+id,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({text})
+})
+
+commentText.value=""
+load()
+
+}
+
+load()
+
+</script>
+
+</body>
+</html>
